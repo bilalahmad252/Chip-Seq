@@ -1,0 +1,32 @@
+##after MACS2
+
+#download the script for conversion of bedgraph to wiggle
+wget https://gist.githubusercontent.com/svigneau/8846527/raw/7fdf60b379245904f1aeb02427e098c06aeb670e/%2520bedgraph_to_wig.pl
+
+#give permissions to the file so it can be executed, must have perl
+chmod 755 bedgraph_to_wig.pl
+
+#conversion of bedgraph to wiggle format
+perl bedgraph_to_wig.pl  --bedgraph tumor_vs_control_control_lambda.bdg --wig tumor_vs_control.wig --step 50
+perl bedgraph_to_wig.pl --bedgraph tumor_vs_control_treat_pileup.bdg --wig tumor_vs_control_treat_pileup.wig --step 50
+
+
+https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64.v369/fetchChromSizes
+https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64.v369/bedGraphToBigWig
+
+chmod 755 bedGraphToBigWig
+chmod 755 fetchChromSizes
+
+./fetcChromSizes hg38 > hg38.chrom.sizes 
+http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.chrom.sizes
+
+./bedGraphToBigWig tumor_vs_control_treat_pileup.bdg hg38.chrom.sizes tumor_control_treat_pileup.bigwig
+./bedGraphToBigWig tumor_vs_control_control_lambda.bdg hg38.chrom.sizes tumor_vs_control_control_lambda.bigwig 
+
+Alter narrowPeaks file, without 5th column
+cut -f1,2,3,4 tumor_vs_control_peaks.narrowPeak > alter_peaks.bed
+
+makeTagDirectory normal_tagdir input.bam 
+makeTagDirectory tumor_tagdir tumor.bam 
+
+getDifferentialPeaks tumor_vs_control_peaks.narrowPeak tumor_tagdir normal_tagdir  > diffPeaks.txt

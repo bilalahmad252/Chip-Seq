@@ -1,0 +1,4 @@
+# config_fastqc.yaml
+
+input_dir: "/homes/bilala/BedTools/Chipseq_2024/raw_data"
+output_dir: "/homes/bilala/BedTools/Chipseq_2024/results/FASTQC"

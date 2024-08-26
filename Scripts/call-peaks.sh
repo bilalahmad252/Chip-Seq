@@ -1,0 +1,1 @@
+callpeak -t SRR13755452.tn5.minimal.bedpe  -g hs --outdir peaks -n tumor --keep-dup all --nomodel --extsize 200 --call-summits --shift -100

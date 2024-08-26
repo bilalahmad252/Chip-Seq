@@ -1,0 +1,28 @@
+# config.yaml
+
+# Directory configuration
+data: "/homes/bilala/BedTools/Chipseq_2024/data"
+raw_data: "raw_data"
+
+trimmed_data: "trimmed_data"
+root_results: "/homes/bilala/BedTools/Chipseq_2024/results"
+FASTQC: "FASTQC"
+reference_data: "reference_data"
+genome: "mm10.fa"
+genome_index: "genome_index"
+results: "results"
+sorted_redup_bam_indices: "sorted_redup_bam_indices"
+alignment: "alignment"
+bowtie2_alignment: "bowtie2_alignment"
+sorted_bam: "sorted_bam"
+sorted_redup_bam: "sorted_redup_bam"
+Peaks: "Peaks"
+Final_peaks: "Final_peaks"
+visualization: "visualization"
+bigWig: "bigWig"
+Bed_Files: "Bed_Files"
+Final_Peaks_BED: "Final_Peaks_BED"
+
+# Accession numbers containing file
+samples_files: "SRA.txt"
+blacklist: "mm10-blacklist.v2_final.bed"
